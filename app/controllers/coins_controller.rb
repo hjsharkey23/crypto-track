@@ -15,7 +15,7 @@ class CoinsController < OpenReadController
 
   # POST /coins
   def create
-    @coin = current_user.songs.create(coin_params)
+    @coin = current_user.coins.create(coin_params)
 
     if @coin.save
       render json: @coin, status: :created, location: @coin
