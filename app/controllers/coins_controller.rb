@@ -1,5 +1,5 @@
-class CoinsController < ApplicationController
-  before_action :set_coin, only: [:show, :update, :destroy]
+class CoinsController < OpenReadController
+  before_action :set_coin, only: [:update, :destroy]
 
   # GET /coins
   def index
