@@ -10,12 +10,12 @@ class CoinsController < OpenReadController
 
   # GET /coins/1
   def show
-    render json: @coin
+    render json: Coin.find(params[:id])
   end
 
   # POST /coins
   def create
-    @coin = Coin.new(coin_params)
+    @coin = current_user.songs.create(coin_params)
 
     if @coin.save
       render json: @coin, status: :created, location: @coin
@@ -41,11 +41,11 @@ class CoinsController < OpenReadController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_coin
-      @coin = Coin.find(params[:id])
+      @coin = current_user.songs.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def coin_params
-      params.require(:coin).permit(:name, :quantity)
+      params.require(:coin).permit(:name, :quantity, :user_id)
     end
 end
