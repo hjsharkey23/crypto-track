@@ -1,11 +1,20 @@
-class CoinsController < OpenReadController
+class CoinsController < ProtectedController
   before_action :set_coin, only: [:update, :destroy]
 
   # GET /coins
-  def index
-    @coins = Coin.all
+  # def index
+  #   @coins = Coin.all
+  #
+  #   render json: @coins
+  # end
 
-    render json: @coins
+  def index
+
+    # puts Coin.all
+
+    @usercoins = current_user.coins.all
+
+    render json: @usercoins
   end
 
   # GET /coins/1
