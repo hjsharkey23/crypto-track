@@ -41,7 +41,7 @@ class CoinsController < OpenReadController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_coin
-      @coin = current_user.songs.find(params[:id])
+      @coin = current_user.coins.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
