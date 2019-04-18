@@ -3,8 +3,8 @@ class CoinsController < OpenReadController
 
   # GET /coins
   def index
-    @usersongs = current_user.songs.all
-    render json: @usersongs
+    @usercoins = current_user.coins.all
+    render json: @usercoins
   end
 
   # GET /coins/1
